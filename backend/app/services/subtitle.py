@@ -23,11 +23,15 @@ def get_transcript(video_id: str, lang_code: str = 'en'):
         print(f"Lỗi không xác định: {e}")
     return None
 
-video_id = "nQdyiK7-VlQ"
+video_id = "BQhgHI8u-z4"
 lang = "en"  # hoặc "a.en" nếu bạn muốn phụ đề tự động tiếng Anh
-
 transcript = get_transcript(video_id, lang)
 
 if transcript:
-    for item in transcript[:5]:  # chỉ in thử 5 đoạn đầu
-        print(f"{item['start']:.2f}s - {item['end']:.2f}s: {item['text']}")
+    for item in transcript[:15]:  # chỉ in thử 5 đoạn đầu
+        print(f"{item['start']:.2f}s - {item['start'] + item['duration']:.2f}s: {item['text']}")
+
+# available_transcripts = YouTubeTranscriptApi.list_transcripts(video_id)
+
+# for transcript in available_transcripts:
+#     print(f"Language: {transcript.language_code}, Auto-generated: {transcript.is_generated}")
